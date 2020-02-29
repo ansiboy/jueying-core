@@ -1,5 +1,5 @@
 import { ComponentDataList } from "./component-data-list";
-import { CompoenntFactory } from "./component-factory";
+import { ComponentFactory } from "./component-factory";
 
 // export interface PageContext {
 //     compoenntParser: CompoenntFactory,

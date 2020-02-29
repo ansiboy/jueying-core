@@ -1,9 +1,9 @@
 node_modules
 out
 dist
-./components.js
-./components.js.map
-./index.js
-./index.js.map
-./decorators.js
-./decorators.js.map
+components.js
+components.js.map
+index.js
+index.js.map
+decorators.js
+decorators.js.map

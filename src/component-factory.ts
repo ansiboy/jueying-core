@@ -6,8 +6,7 @@ import { ComponentProps } from "./component-props";
 
 type compoenntTypes = { [name: string]: typeof React.Component | React.ComponentType };
 
-
-export class CompoenntFactory {
+export abstract class ComponentFactory {
     private compoenntTypes: compoenntTypes;
 
     constructor(compoenntTypes: compoenntTypes) {
@@ -24,11 +23,9 @@ export class CompoenntFactory {
     }
 
     /** 创建视图组件 */
-    createViewComponent(props?: any, ...children: React.ReactNode[]) {
-        return React.createElement("div", props, ...children);
-    }
+    abstract createViewComponent(props?: any, ...children: React.ReactNode[]);
 
-    protected createErrorElement(err: Error) {
+    private createErrorElement(err: Error) {
         // return <div>
         //     <div>Error:</div>
         //     <div>{err.message}</div>
@@ -57,5 +54,13 @@ export class CompoenntFactory {
 
         let r = React.createElement(compoenntType, props as any, children);
         return r;
+    }
+}
+
+export class ReactComponentFactory {
+
+    /** 创建视图组件 */
+    createViewComponent(props?: any, ...children: React.ReactNode[]) {
+        return React.createElement("div", props, ...children);
     }
 }

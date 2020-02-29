@@ -1,6 +1,6 @@
-import { CompoenntFactory } from "./component-factory";
+import { ComponentFactory } from "./component-factory";
 
 export interface ComponentProps {
     context: any | undefined,
-    factory: CompoenntFactory
+    factory: ComponentFactory
 }
