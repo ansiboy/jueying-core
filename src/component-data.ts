@@ -3,9 +3,9 @@ import { ComponentProps } from "./component-props";
 
 export interface ComponentData {
     /** 组件类型名称 */
-    typeName: string;
+    type: string;
     /** 组件属性 */
-    props?: ComponentProps;
+    props?: any;
     /** 子组件 */
     children?: (ComponentData | string)[];
 }

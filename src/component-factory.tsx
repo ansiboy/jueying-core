@@ -4,12 +4,12 @@ import { ComponentData } from "./component-data";
 import { errors } from "./errors";
 import { ComponentProps } from "./component-props";
 
-type compoenntTypes = { [name: string]: typeof React.Component | React.ComponentType };
+export type CompoenntTypes = { [name: string]: typeof React.Component | React.ComponentType };
 
 export abstract class ComponentFactory {
-    private compoenntTypes: compoenntTypes;
+    private compoenntTypes: CompoenntTypes;
 
-    constructor(compoenntTypes: compoenntTypes) {
+    constructor(compoenntTypes: CompoenntTypes) {
         this.compoenntTypes = compoenntTypes;
     }
 
@@ -18,21 +18,16 @@ export abstract class ComponentFactory {
             return this._createComponent(componentData, context);
         }
         catch (e) {
-            return this.createErrorElement(e);
+            return this.processError(e);
         }
     }
 
     /** 创建视图组件 */
     abstract createViewComponent(props?: any, ...children: React.ReactNode[]);
 
-    private createErrorElement(err: Error) {
-        // return <div>
-        //     <div>Error:</div>
-        //     <div>{err.message}</div>
-        // </div>
-        return this.createViewComponent(
-            this.createViewComponent("Error:"),
-            this.createViewComponent(err.message));
+    protected processError(err: Error) {
+        console.error(err);
+        return null;
     }
 
     private _createComponent(componentData: ComponentData | string, context?: any) {
@@ -45,7 +40,9 @@ export abstract class ComponentFactory {
         let props = (componentData.props || {}) as ComponentProps;
 
         let defaultProps: ComponentProps = { factory: this, context };
-        let name = componentData.typeName;
+        Object.assign(props, defaultProps);
+        
+        let name = componentData.type;
         let compoenntType = this.compoenntTypes[name];
 
         if (compoenntType == null) {
@@ -57,10 +54,19 @@ export abstract class ComponentFactory {
     }
 }
 
-export class ReactComponentFactory {
+export class ReactComponentFactory extends ComponentFactory {
 
     /** 创建视图组件 */
     createViewComponent(props?: any, ...children: React.ReactNode[]) {
-        return React.createElement("div", props, ...children);
+        // return React.createElement("div", props, ...children);
+        props = props || {};
+        return <div {...props}>{children}</div>
+    }
+
+    protected processError(err) {
+        return <div>
+            <div>Error:</div>
+            <div>{err.message}</div>
+        </div>
     }
 }
