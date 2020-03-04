@@ -1,5 +1,5 @@
 {
-    "name": "jueying-core",
+    "name": "maishu-jueying-core",
     "version": "1.0.2",
     "dependencies": {},
     "main": "./dist/index.js",
@@ -11,7 +11,9 @@
         "out",
         "src",
         "dist",
-        "./*"
+        "components.*",
+        "decorators.*",
+        "index.*"
     ],
     "devDependencies": {
         "@types/react": "^16.9.23",
