@@ -1,8 +1,8 @@
 {
     "name": "maishu-jueying-core",
-    "version": "1.0.3",
+    "version": "1.0.5",
     "dependencies": {},
-    "main": "./dist/index.js",
+    "main": "./out/index.js",
     "types": "./out/index.d.ts",
     "scripts": {
         "build": "grunt"

@@ -1,21 +1,6 @@
-const path = require("path");
 const webpack_src = require('./webpack.config.js');
-const webpack_components = Object.assign({}, webpack_src, {
-    entry: path.join(__dirname, "out/components/index.js"),//已多次提及的唯一入口文件
-    output: {
-        path: __dirname,//打包后的文件存放的地方
-        filename: "components.js",//打包后输出文件的文件名
-        libraryTarget: 'umd',
-    }
-});
-const webpack_decorators = Object.assign({}, webpack_src, {
-    entry: path.join(__dirname, "out/decorators.js"),//已多次提及的唯一入口文件
-    output: {
-        path: __dirname,//打包后的文件存放的地方
-        filename: "decorators.js",//打包后输出文件的文件名
-        libraryTarget: 'umd',
-    }
-});
+
+
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
@@ -26,10 +11,28 @@ module.exports = function (grunt) {
         },
         webpack: {
             webpack_src,
-            webpack_components,
-            webpack_decorators,
+            // webpack_components,
+            // webpack_decorators,
         },
     });
-    
+
     grunt.registerTask('default', ['shell', 'webpack']);
 }
+
+function modifyVersion() {
+    const package = require("./package.json");
+    const path = require("path");
+
+    let version = package.version || "1.0.0";
+    let arr = version.split(".");
+    arr[arr.length - 1] = (Number.parseInt(arr[arr.length - 1]) + 1).toString();
+    version = arr.join(".");
+    package.version = version;
+
+    const fs = require('fs');
+    let data = JSON.stringify(package, null, 4);
+    fs.writeFile("package.json", data, "utf8", (err => {
+        console.log(err)
+    }));
+};
+modifyVersion();

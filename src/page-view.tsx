@@ -1,4 +1,4 @@
-import React = require("react");
+import * as React from "react";
 import { ComponentProps } from "./component-props";
 
 export class PageView<P extends ComponentProps, S> extends React.Component<P, S> {

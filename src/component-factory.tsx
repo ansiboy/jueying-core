@@ -1,5 +1,5 @@
 
-import React = require("react");
+import * as React from "react";
 import { ComponentData } from "./component-data";
 import { errors } from "./errors";
 import { ComponentProps } from "./component-props";
@@ -41,7 +41,7 @@ export abstract class ComponentFactory {
 
         let defaultProps: ComponentProps = { factory: this, context };
         Object.assign(props, defaultProps);
-        
+
         let name = componentData.type;
         let compoenntType = this.compoenntTypes[name];
 
