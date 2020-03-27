@@ -3,17 +3,9 @@
         "jsx": "react",
         "experimentalDecorators": true,
         "target": "es2017",
+        "module": "commonjs",
         "declaration": true,
-        "outDir": "../out",
-        "sourceMap": true,
-        "baseUrl": "./",
-        "paths": {
-            "csstype": [
-                "../node_modules/csstype/index.d.ts"
-            ],
-            "react": [
-                "../node_modules/react/index.d.ts"
-            ]
-        }
+        "outDir":"../out",
+        "sourceMap": true
     }
 }

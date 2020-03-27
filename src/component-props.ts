@@ -1,5 +1,5 @@
 import { ComponentFactory } from "./component-factory";
-import * as React from "react";
+import React = require("react");
 
 export type ComponentProps<T extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> = any> = React.ComponentProps<T> & {
     context: any | undefined,
