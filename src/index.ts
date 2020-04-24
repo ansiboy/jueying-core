@@ -1,5 +1,6 @@
 export { ComponentData } from "./component-data";
 export { ComponentFactory } from "./component-factory";
 export { ComponentInfo } from "./component-info";
-export { ComponentAttribute } from "./component-attribute";
 export { component } from "./decorators";
+export { parseComponentData } from "./parse-component-data";
+export { registerComponent, componentTypes } from "./register";

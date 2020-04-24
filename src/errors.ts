@@ -7,8 +7,12 @@ export let errors = {
         let msg = `Can not find component '${name}' in the module, module path is: '${path}'.`;
         return new Error(msg);
     },
-    componentNotExists(name: string) {
+    componentTypeNotExists(name: string) {
         let msg = `Component '${name}' not exists.`;
+        return new Error(msg);
+    },
+    argumentNull(name: string) {
+        let msg = `Argument '${name}' can not be null or empty.`;
         return new Error(msg);
     }
 }
