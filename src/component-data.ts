@@ -1,14 +1,14 @@
 
-export interface ComponentData {
+interface BaseProps {
+    ref?: any,
+    key?: string,
+}
+
+export interface ComponentData<P extends BaseProps = BaseProps> {
     /** 组件类型名称 */
     type: string;
     /** 组件属性 */
-    props: {
-        style?: any,
-        ref?: any,
-        key?: string,
-        className?: string,
-    };
+    props: P;
     /** 子组件 */
     children: (ComponentData | string)[];
     id: string;
