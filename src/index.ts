@@ -1,4 +1,4 @@
-export { ComponentData } from "./component-data";
+export { ComponentData, ComponentProps } from "./component-data";
 export { ComponentFactory } from "./component-factory";
 export { ComponentInfo } from "./component-info";
 export { component } from "./decorators";
