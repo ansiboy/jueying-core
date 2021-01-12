@@ -2,6 +2,8 @@
 export interface ComponentProps {
     ref?: any,
     key?: string,
+    /** 组件的编号，在页面中唯一 */
+    id: string;
 }
 
 export interface ComponentData {
@@ -10,9 +12,12 @@ export interface ComponentData {
     /** 组件属性 */
     props: any;
     /** 子组件 */
-    children: (ComponentData | string)[];
+    children?: (ComponentData | string)[];
     id: string;
     // parentId?: string;
     selected?: boolean;
     // name?: string;
+    parentId?: string
 }
+
+export type PageData = Omit<ComponentData, "children"> & { children: ComponentData[] };
