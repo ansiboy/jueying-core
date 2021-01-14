@@ -6,6 +6,7 @@ import { ComponentContainer } from "./component-container";
 export interface PageHeaderProps extends ComponentProps {
     height: number,
     visible: boolean,
+    style?: React.CSSProperties,
 }
 
 @component({ type: PageHeader.typeName })
@@ -17,7 +18,8 @@ export class PageHeader extends React.Component<PageHeaderProps> {
     static defaultProps: PageHeaderProps = { height: 50, visible: true, id: PageHeader.id };
 
     render() {
-        let style: React.CSSProperties = { height: this.props.height, display: this.props.visible ? "" : "none" }
+        let style: React.CSSProperties = this.props.style || {};
+        Object.assign(style, { height: this.props.height, display: this.props.visible ? "" : "none" });
         return <ComponentContainer id={this.props.id} className={PageHeader.className} style={style} />
     }
 }

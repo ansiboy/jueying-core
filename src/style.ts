@@ -48,3 +48,14 @@ if (!document.getElementById(elementId) && document.head != null) {
     }
     `
 }
+
+export function isVisible(style: React.CSSProperties) {
+    if (!style.display)
+        return true;
+
+    return style.display != "none";
+}
+
+export function isFixed(style: React.CSSProperties) {
+    return style.position == "fixed" || style.position == "absolute";
+}
