@@ -1,7 +1,8 @@
 import { ComponentProps } from "./component-data";
-import { component } from "./decorators";
+// import { component } from "./decorators";
 import * as React from "react";
 import { ComponentContainer } from "./component-container";
+import { registerComponent } from "./register";
 
 export interface PageHeaderProps extends ComponentProps {
     height: number,
@@ -9,7 +10,7 @@ export interface PageHeaderProps extends ComponentProps {
     style?: React.CSSProperties,
 }
 
-@component({ type: PageHeader.typeName })
+// @component({ type: PageHeader.typeName })
 export class PageHeader extends React.Component<PageHeaderProps> {
     static typeName = "header";
     static className = "header";
@@ -23,3 +24,5 @@ export class PageHeader extends React.Component<PageHeaderProps> {
         return <ComponentContainer id={this.props.id} className={PageHeader.className} style={style} />
     }
 }
+
+registerComponent(PageHeader.typeName, PageHeader);

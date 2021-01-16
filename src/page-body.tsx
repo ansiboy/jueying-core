@@ -1,16 +1,17 @@
 import { ComponentProps } from "./component-data";
-import { component } from "./decorators";
+// import { component } from "./decorators";
 import * as React from "react";
 import { ComponentContainer } from "./component-container";
 import { PageContext } from "./page";
 import { PageHeader, PageHeaderProps } from "./page-header";
 import { PageFooter, PageFooterProps } from "./page-footer";
+import { registerComponent } from "./register";
 
 export interface PageBodyProps extends ComponentProps {
     visible: boolean,
 }
 
-@component({ type: PageBody.typeName })
+// @component({ type: PageBody.typeName })
 export class PageBody extends React.Component<PageBodyProps> {
 
     static typeName = "section";
@@ -47,3 +48,4 @@ export class PageBody extends React.Component<PageBodyProps> {
 }
 
 PageBody.contextType = PageContext;
+registerComponent(PageBody.typeName, PageBody);

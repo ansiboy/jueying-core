@@ -1,7 +1,8 @@
 import { ComponentProps } from "./component-data";
-import { component } from "./decorators";
+// import { component } from "./decorators";
 import * as React from "react";
 import { ComponentContainer } from "./component-container";
+import { registerComponent } from "./register";
 
 export interface PageFooterProps extends ComponentProps {
     height: number,
@@ -9,7 +10,7 @@ export interface PageFooterProps extends ComponentProps {
     style?: React.CSSProperties,
 }
 
-@component({ type: PageFooter.typeName })
+// @component({ type: PageFooter.typeName })
 export class PageFooter extends React.Component<PageFooterProps> {
     static typeName = "footer";
     static className = "footer";
@@ -23,3 +24,4 @@ export class PageFooter extends React.Component<PageFooterProps> {
     }
 }
 
+registerComponent(PageFooter.typeName, PageFooter);
