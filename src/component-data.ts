@@ -17,7 +17,8 @@ export interface ComponentData {
     // parentId?: string;
     selected?: boolean;
     // name?: string;
-    parentId?: string
+    parentId?: string;
+    name?: string;
 }
 
 export type PageData = Omit<ComponentData, "children"> & { children: ComponentData[] };

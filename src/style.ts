@@ -1,7 +1,4 @@
-import { Page } from "./page";
-import { PageBody } from "./page-body";
-import { PageHeader } from "./page-header";
-import { PageFooter } from "./page-footer";
+import { Page, PageBody, PageFooter, PageHeader } from "./components";
 
 let elementId = "maishu-jueying-core-style";
 if (!document.getElementById(elementId) && document.head != null) {

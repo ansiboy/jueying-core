@@ -1,12 +1,12 @@
 import * as React from "react";
 
 
-import { registerComponent } from "./register";
+import { registerComponent } from "../register";
 // import { component } from "./decorators";
-import { parseComponentData } from "./parse-component-data";
+import { parseComponentData } from "../parse-component-data";
 import { CSSProperties } from "react";
 import { Callback } from "maishu-toolkit/out/callback";
-import { PageData } from "./component-data";
+import { PageData } from "../component-data";
 
 export interface PageProps {
     pageData: PageData
@@ -62,7 +62,8 @@ export class Page extends React.Component<PageProps> {
 //========================================================
 // 兼容旧代码
 registerComponent("PageView", Page);
-registerComponent(Page.typeName, Page);
 //========================================================
+registerComponent(Page.typeName, Page);
+
 
 

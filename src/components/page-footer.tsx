@@ -1,8 +1,8 @@
-import { ComponentProps } from "./component-data";
+import { ComponentProps } from "../component-data";
 // import { component } from "./decorators";
 import * as React from "react";
-import { ComponentContainer } from "./component-container";
-import { registerComponent } from "./register";
+import { ComponentContainer } from "../component-container";
+import { registerComponent } from "../register";
 
 export interface PageFooterProps extends ComponentProps {
     height: number,
@@ -19,7 +19,7 @@ export class PageFooter extends React.Component<PageFooterProps> {
 
     render() {
         let style: React.CSSProperties = this.props.style || {};
-        Object.assign(style, { height: this.props.height, display: this.props.visible ? "" : "none" });
+        Object.assign({}, style, { height: this.props.height, display: this.props.visible ? "" : "none" });
         return <ComponentContainer id={this.props.id} className={PageFooter.className} style={style} />
     }
 }

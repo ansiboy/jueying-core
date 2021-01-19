@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PageContext } from "./page";
+import { PageContext } from "./components";
 import { parseComponentData } from "./parse-component-data";
 import { CSSProperties } from "react";
 import { ComponentData } from "./component-data";

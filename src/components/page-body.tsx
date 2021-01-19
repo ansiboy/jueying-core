@@ -1,11 +1,11 @@
-import { ComponentProps } from "./component-data";
+import { ComponentProps } from "../component-data";
 // import { component } from "./decorators";
 import * as React from "react";
-import { ComponentContainer } from "./component-container";
+import { ComponentContainer } from "../component-container";
 import { PageContext } from "./page";
 import { PageHeader, PageHeaderProps } from "./page-header";
 import { PageFooter, PageFooterProps } from "./page-footer";
-import { registerComponent } from "./register";
+import { registerComponent } from "../register";
 
 export interface PageBodyProps extends ComponentProps {
     visible: boolean,
