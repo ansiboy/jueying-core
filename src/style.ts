@@ -4,7 +4,7 @@ let elementId = "maishu-jueying-core-style";
 if (!document.getElementById(elementId) && document.head != null) {
     let element = document.createElement('style');
     element.type = 'text/css';
-    element.id = "taro-builder-core-style";
+    element.id = "maishu-jueying-core-style";
     document.head.appendChild(element);
     element.innerHTML = `
     .${Page.className} {
