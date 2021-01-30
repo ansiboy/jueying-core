@@ -10,7 +10,8 @@ export interface ComponentContainerProps {
     style?: CSSProperties
 }
 
-export class ComponentContainer extends React.Component<ComponentContainerProps> {
+/** 组件容器，实现组件的渲染 */
+export class ComponentContainer<P extends ComponentContainerProps = ComponentContainerProps> extends React.Component<P> {
 
     renderChild(componentData: ComponentData) {
         return <React.Fragment key={componentData.id}>
