@@ -51,7 +51,8 @@ export class Page extends React.Component<PageProps> {
         let childComponents = children.map(o => <React.Fragment key={o.id}>
             {parseComponentData(o)}
         </React.Fragment>)
-        return <div className={`${Page.className}`} style={pageStyle}>
+        let elementId = "_" + pageData.id.split("-").join("");
+        return <div id={elementId} className={`${Page.className}`} style={pageStyle}>
             <PageContext.Provider value={{ page: this, pageData }}>
                 {childComponents}
             </PageContext.Provider>
