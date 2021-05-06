@@ -5,4 +5,5 @@ export { registerComponent, componentTypes } from "./register";
 
 export { Page, PageHeader, PageHeaderProps, PageFooter, PageFooterProps, PageBody, PageBodyProps } from "./components/index";
 export { ComponentContainer, ComponentContainerProps } from "./component-container";
+export { PageContext } from "./components/page";
 import "./style";
