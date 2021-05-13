@@ -1,6 +1,6 @@
 {
     "name": "maishu-jueying-core",
-    "version": "1.6.2",
+    "version": "1.6.5",
     "dependencies": {
         "maishu-toolkit": "^1.6.1"
     },

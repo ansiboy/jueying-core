@@ -1,4 +1,8 @@
 const webpack_src = require('./webpack.config.js');
+let webpack_min = Object.assign({}, webpack_src, {
+    output: Object.assign({}, webpack_src.output, { filename: "index.min.js" }),
+    mode: 'production',
+})
 
 function modifyVersion() {
     const package = require("./package.json");
@@ -27,8 +31,7 @@ module.exports = function (grunt) {
         },
         webpack: {
             webpack_src,
-            // webpack_components,
-            // webpack_decorators,
+            webpack_min,
         },
     });
 
