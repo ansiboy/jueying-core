@@ -19,7 +19,7 @@ export class PageFooter extends React.Component<PageFooterProps> {
 
     render() {
         let style: React.CSSProperties = this.props.style || {};
-        Object.assign({}, style, { height: this.props.height, display: this.props.visible ? "" : "none" });
+        Object.assign({}, style, { height: this.props.height ? this.props.height : null, display: this.props.visible ? "" : "none" });
         return <ComponentContainer id={this.props.id} className={PageFooter.className} style={style} />
     }
 }
