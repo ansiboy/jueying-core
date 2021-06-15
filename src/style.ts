@@ -1,7 +1,7 @@
 import { Page, PageBody, PageFooter, PageHeader } from "./components";
 
 let elementId = "maishu-jueying-core-style";
-if (document != null && document.head != null && !document.getElementById(elementId)) {
+if (typeof document != "undefined" && document.head != null && !document.getElementById(elementId)) {
     let element = document.createElement('style');
     element.type = 'text/css';
     element.id = elementId;
