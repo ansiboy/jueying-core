@@ -14,5 +14,9 @@ export let errors = {
     argumentNull(name: string) {
         let msg = `Argument '${name}' can not be null or empty.`;
         return new Error(msg);
+    },
+    propsFileNull(fieldName: string) {
+        let msg = `Field '${fieldName}' of props is null.`;
+        return new Error(msg);
     }
 }

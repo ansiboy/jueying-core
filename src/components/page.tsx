@@ -7,6 +7,7 @@ import { parseComponentData } from "../parse-component-data";
 import { CSSProperties } from "react";
 import { Callback } from "maishu-toolkit/out/callback";
 import { PageData } from "../component-data";
+import { errors } from "../errors";
 
 export interface PageProps {
     pageData: PageData
@@ -28,7 +29,10 @@ export class Page extends React.Component<PageProps> {
     static className = "page-view";
 
     constructor(props: PageProps) {
-        super(props)
+        super(props);
+
+        if (!props.pageData)
+            throw errors.propsFileNull("pageData");
     }
 
     get components() {
