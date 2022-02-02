@@ -12,7 +12,7 @@ export interface ComponentData {
     /** 组件属性 */
     props: any;
     /** 子组件 */
-    children?: (ComponentData | string)[];
+    // children?: (ComponentData | string)[];
     id: string;
     // parentId?: string;
     selected?: boolean;
@@ -21,4 +21,4 @@ export interface ComponentData {
     name?: string;
 }
 
-export type PageData = Omit<ComponentData, "children"> & { children: ComponentData[] };
+export type PageData = Omit<ComponentData, "parentId"> & { children: ComponentData[] };
