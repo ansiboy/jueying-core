@@ -1,5 +1,5 @@
 import * as React from "react";
-import { registerComponent } from "..";
+import { registerComponent } from "../register";
 
 export interface Props {
 
