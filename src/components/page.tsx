@@ -41,15 +41,6 @@ export class Page extends React.Component<PageProps> {
     render() {
         let pageStyle: CSSProperties = {};
         let pageData = this.props.pageData;
-        // pageData.children.forEach(c => {
-        //     c.props.ref = (e: React.Component) => {
-        //         if (e == null) return;
-        //         if (this.#components[c.id] == null)
-        //             this.childComponentCreated.fire({ component: e, id: c.id });
-
-        //         this.#components[c.id] = e || this.#components[c.id];
-        //     }
-        // })
         let children = pageData.children.filter(o => o.parentId == pageData.id);
         let childComponents = children.map(o => <React.Fragment key={o.id}>
             {parseComponentData(o, pageData)}

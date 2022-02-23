@@ -3,6 +3,7 @@ import React = require("react");
 import { componentTypes } from "./register";
 import { errors } from "./errors";
 import { PageData } from ".";
+import { ComponentWrapper } from "./components/component-wrapper";
 
 export function parseComponentData(componentData: ComponentData, pageData: PageData) {
     let type = componentTypes[componentData.type];
@@ -14,7 +15,7 @@ export function parseComponentData(componentData: ComponentData, pageData: PageD
         children = pageData.children.filter(o => o.parentId == o.id).map(c => typeof c == "string" ? c : parseComponentData(c, pageData));
     }
 
-    return React.createElement(type, componentData.props, ...children);
+    return React.createElement(ComponentWrapper, {}, React.createElement(type, componentData.props, ...children));
 }
 
 export function parsePageData(pageData: PageData) {
@@ -24,5 +25,5 @@ export function parsePageData(pageData: PageData) {
     }
 
     let children = pageData.children.map(c => parseComponentData(c, pageData));
-    return React.createElement(type, pageData.props, ...children);
+    return React.createElement(ComponentWrapper, {}, React.createElement(type, pageData.props, ...children));
 }

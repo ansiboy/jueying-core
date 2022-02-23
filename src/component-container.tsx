@@ -12,7 +12,7 @@ export interface ComponentContainerProps {
 }
 
 /** 组件容器，实现组件的渲染 */
-export class ComponentContainer<P extends ComponentContainerProps = ComponentContainerProps> extends React.Component<P> {
+export class ComponentContainer<P extends ComponentContainerProps = ComponentContainerProps, S = any> extends React.Component<P, S> {
 
     static typeName = "ComponentContainer";
 
