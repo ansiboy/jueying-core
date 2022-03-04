@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PageContext } from "./components";
+import { PageContext } from "./components/page-context";
 import { parseComponentData } from "./parse-component-data";
 import { CSSProperties } from "react";
 import { ComponentData } from "./component-data";
@@ -17,7 +17,6 @@ export class ComponentContainer<P extends ComponentContainerProps = ComponentCon
     static typeName = "ComponentContainer";
 
     renderChild(componentData: ComponentData, pageData: PageData) {
-        // componentData.children = pageData.children.filter(o => o.parentId == componentData.id);
         return <React.Fragment key={componentData.id}>
             {parseComponentData(componentData, pageData)}
         </React.Fragment>

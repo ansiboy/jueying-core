@@ -23,4 +23,4 @@ export interface ComponentData {
     name?: string;
 }
 
-export type PageData = Omit<ComponentData, "parentId"> & { children: ComponentData[] };
+export type PageData = { id: string, children: ComponentData[] };

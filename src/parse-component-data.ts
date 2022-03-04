@@ -12,18 +12,9 @@ export function parseComponentData(componentData: ComponentData, pageData: PageD
     }
     let children: (string | React.ReactElement<any>)[] = [];
     if (pageData.children) {
-        children = pageData.children.filter(o => o.parentId == o.id).map(c => typeof c == "string" ? c : parseComponentData(c, pageData));
+        children = pageData.children.filter(o => o.parentId == componentData.id).map(c => parseComponentData(c, pageData));
     }
 
-    return React.createElement(ComponentWrapper, {}, React.createElement(type, componentData.props, ...children));
+    return React.createElement(componentTypes[ComponentWrapper.typeName], { key: componentData.id }, componentData.props, React.createElement(type, componentData.props, ...children));
 }
 
-export function parsePageData(pageData: PageData) {
-    let type = componentTypes[pageData.type];
-    if (type == null) {
-        throw errors.componentTypeNotExists(pageData.type);
-    }
-
-    let children = pageData.children.map(c => parseComponentData(c, pageData));
-    return React.createElement(ComponentWrapper, {}, React.createElement(type, pageData.props, ...children));
-}
