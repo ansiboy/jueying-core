@@ -1,8 +1,9 @@
 import * as React from "react";
+import { ComponentData } from "../component-data";
 import { registerComponent } from "../register";
 
-export interface Props {
-
+export interface ComponentWrapperProps {
+    componentData: ComponentData,
 }
 
 interface State {
@@ -10,11 +11,11 @@ interface State {
 }
 
 /** 组件包装，处理组件异常等 */
-export class ComponentWrapper extends React.Component<Props, State> {
+export class ComponentWrapper extends React.Component<ComponentWrapperProps, State> {
 
     static typeName: string = "ComponentWrapper";
 
-    constructor(props: Props) {
+    constructor(props: ComponentWrapperProps) {
         super(props);
         this.state = { error: undefined };
     }

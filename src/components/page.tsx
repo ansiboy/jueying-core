@@ -1,13 +1,6 @@
 import * as React from "react";
-
-
 import { registerComponent } from "../register";
-// import { component } from "./decorators";
-import { parseComponentData } from "../parse-component-data";
-import { CSSProperties } from "react";
-import { ComponentProps, PageData } from "../component-data";
-import { errors } from "../errors";
-import { PageContext } from "./page-context";
+import { ComponentProps } from "../component-data";
 import { ComponentContainer } from "../component-container";
 
 export interface PageProps extends ComponentProps {

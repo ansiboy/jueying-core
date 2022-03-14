@@ -2,10 +2,11 @@ import React = require("react");
 import { PageData } from "../component-data";
 import { parseComponentData } from "../parse-component-data";
 import { registerComponent } from "../register";
-import { PageContext } from "./page-context";
+import { AppContext } from "./context";
 
 export interface AppProps {
-    pageData: PageData
+    pageData: PageData,
+    componentTypes: { [key: string]: React.ComponentClass<any> },
 }
 
 
@@ -14,12 +15,12 @@ export class App extends React.Component<AppProps>{
     static typeName = "App";
 
     render() {
-        let pageData = this.props.pageData;
+        let { pageData, componentTypes } = this.props;
         let children = pageData.children.filter(o => o.parentId == pageData.id);
-        let childComponents = children.map(o => parseComponentData(o, pageData));
-        return <PageContext.Provider value={{ pageData: this.props.pageData }}>
+        let childComponents = children.map(o => parseComponentData(o, pageData, componentTypes));
+        return <AppContext.Provider value={{ pageData: this.props.pageData, componentTypes }}>
             {childComponents}
-        </PageContext.Provider>
+        </AppContext.Provider>
     }
 }
 

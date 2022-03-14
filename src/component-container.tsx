@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PageContext } from "./components/page-context";
+import { AppContext } from "./components/context";
 import { parseComponentData } from "./parse-component-data";
 import { CSSProperties } from "react";
 import { ComponentData } from "./component-data";
@@ -16,22 +16,22 @@ export class ComponentContainer<P extends ComponentContainerProps = ComponentCon
 
     static typeName = "ComponentContainer";
 
-    renderChild(componentData: ComponentData, pageData: PageData) {
+    renderChild(componentData: ComponentData, pageData: PageData, componentTypes: { [typeName: string]: React.ComponentClass }) {
         return <React.Fragment key={componentData.id}>
-            {parseComponentData(componentData, pageData)}
+            {parseComponentData(componentData, pageData, componentTypes)}
         </React.Fragment>
     }
     render() {
-        return <PageContext.Consumer>
+        return <AppContext.Consumer>
             {args => {
                 let children = args.pageData?.children.filter(o => o.parentId == this.props.id) || [];
                 return <div className={this.props.className} style={this.props.style}>
-                    {children.map(o => this.renderChild(o, args.pageData as PageData))}
+                    {children.map(o => this.renderChild(o, args.pageData as PageData, args.componentTypes))}
                 </div>
             }}
-        </PageContext.Consumer>
+        </AppContext.Consumer>
     }
 }
 
-ComponentContainer.contextType = PageContext;
+ComponentContainer.contextType = AppContext;
 registerComponent(ComponentContainer.typeName, ComponentContainer);
