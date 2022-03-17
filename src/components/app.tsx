@@ -16,7 +16,7 @@ export class App extends React.Component<AppProps>{
 
     render() {
         let { pageData, componentTypes } = this.props;
-        let children = pageData.children.filter(o => o.parentId == pageData.id);
+        let children = pageData.children.filter(o => o.parentId == pageData.id || o.parentId == null);
         let childComponents = children.map(o => parseComponentData(o, pageData, componentTypes));
         return <AppContext.Provider value={{ pageData: this.props.pageData, componentTypes }}>
             {childComponents}

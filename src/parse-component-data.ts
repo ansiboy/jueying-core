@@ -24,6 +24,7 @@ export function parseComponentData(componentData: ComponentData, pageData: PageD
     let wrapper = componentTypes[ComponentWrapper.typeName] || ComponentWrapper;
     let wrapperProps: ComponentWrapperProps = {
         componentData: componentData,
+        id: componentData.id,
     }
     return React.createElement(wrapper, { key: componentData.id, ...(wrapperProps) }, React.createElement(type, componentData.props, ...children));
 }

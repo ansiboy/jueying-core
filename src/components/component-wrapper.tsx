@@ -1,8 +1,8 @@
 import * as React from "react";
-import { ComponentData } from "../component-data";
+import { ComponentData, ComponentProps } from "../component-data";
 import { registerComponent } from "../register";
 
-export interface ComponentWrapperProps {
+export interface ComponentWrapperProps extends ComponentProps {
     componentData: ComponentData,
 }
 

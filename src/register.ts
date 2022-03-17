@@ -16,3 +16,4 @@ export function registerComponent(componentName: string, componentType: React.Co
 
     componentTypes[componentName] = componentType;
 }
+

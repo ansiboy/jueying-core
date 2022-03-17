@@ -14,13 +14,21 @@ export interface ComponentData {
     /** 组件属性 */
     props: any;
     /** 子组件 */
-    // children?: (ComponentData | string)[];
     id: string;
-    // parentId?: string;
-    selected?: boolean;
     // name?: string;
     parentId?: string;
     name?: string;
+    status?: ComponentStatus
+}
+
+export enum ComponentStatus {
+    default = 0,
+    /** 已选中 */
+    selected = 1,
+    /** 禁用 */
+    disabled = 2,
+    /** 不允许删除 */
+    asset = 4,
 }
 
 export type PageData = { id: string, children: ComponentData[] };
