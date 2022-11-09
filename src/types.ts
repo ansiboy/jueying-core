@@ -1,5 +1,8 @@
 import * as React from "react";
 
+export type ElementFactory = typeof React.createElement;
+export type ComponentTypes = { [key: string]: React.ComponentClass<any> | React.FunctionComponent | string };
+
 export interface ComponentProps {
     ref?: any,
     key?: string,
@@ -17,10 +20,10 @@ export interface ComponentData {
     props: any;
     /** 子组件 */
     id: string;
-    // name?: string;
-    parentId?: string;
+    // parentId?: string;
     name?: string;
-    status?: ComponentStatus
+    status?: ComponentStatus,
+    children?: (ComponentData | string)[]
 }
 
 export enum ComponentStatus {
@@ -34,3 +37,13 @@ export enum ComponentStatus {
 }
 
 export type PageData = { id: string, children: ComponentData[] };
+
+export type ComponentFactory<Context = any> = (componentData: ComponentData, context?: Context) => JSX.Element;
+
+
+type Item = Omit<ComponentData, "children"> & {
+    id: string, parentId: string | null,
+};
+export type ComponentDataList = Item[];
+
+export type ChildComponentProps = { parentId: string };

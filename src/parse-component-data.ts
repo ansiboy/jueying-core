@@ -1,14 +1,13 @@
-import { ComponentData } from "./component-data";
-import React = require("react");
-// import { componentTypes } from "./register";
+import { ComponentData, ComponentTypes } from "./types";
+import * as React from "react";
 import { errors } from "./errors";
 import { PageData } from ".";
-import { ComponentWrapper, ComponentWrapperProps } from "./components/component-wrapper";
+import { ElementFactory } from "./types";
 
-type ComponentTypes = { [key: string]: React.ComponentClass<any> | string };
-export function parseComponentData(componentData: ComponentData, pageData: PageData, componentTypes: ComponentTypes) {
+
+export function parseComponentData(componentData: ComponentData, componentTypes: ComponentTypes, createElement: ElementFactory) {
     if (!componentData) throw errors.argumentNull("componentData");
-    if (!pageData) throw errors.argumentNull("pageData");
+    // if (!pageData) throw errors.argumentNull("pageData");
     if (!componentTypes) throw errors.argumentNull("componentTypes");
 
     let type = componentTypes[componentData.type];
@@ -16,16 +15,15 @@ export function parseComponentData(componentData: ComponentData, pageData: PageD
         throw errors.componentTypeNotExists(componentData.type);
     }
     let children: (string | React.ReactElement<any>)[] = [];
-    let childComponentInfos = pageData.children.filter(o => o.parentId == componentData.id);
+    let childComponentInfos = componentData.children || [];//pageData.children.filter(o => o.parentId == componentData.id);
     if (childComponentInfos.length > 0) {
-        children = childComponentInfos.map(c => parseComponentData(c, pageData, componentTypes));
+        children = childComponentInfos.map(c => {
+            if (typeof c == "string")
+                return c;
+            return parseComponentData(c, componentTypes, createElement)
+        });
     }
 
-    let wrapper = componentTypes[ComponentWrapper.typeName] || ComponentWrapper;
-    let wrapperProps: ComponentWrapperProps = {
-        componentData: componentData,
-        id: componentData.id,
-    }
-    return React.createElement(wrapper, { key: componentData.id, ...(wrapperProps) }, React.createElement(type, componentData.props, ...children));
+    return createElement(type, componentData.props, ...children);
 }
 
