@@ -1,3 +1,4 @@
+import * as React from "react";
 
 export interface ComponentProps {
     ref?: any,
@@ -6,6 +7,7 @@ export interface ComponentProps {
     id: string;
     /** 组件的名称，在页面中唯一 */
     name?: string;
+    children?: React.ReactNode
 }
 
 export interface ComponentData {

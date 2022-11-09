@@ -4,8 +4,9 @@ import { parseComponentData } from "./parse-component-data";
 import { ComponentData } from "./component-data";
 import { PageData, registerComponent } from ".";
 
-export interface ComponentContainerProps {
+export interface ComponentContainerProps extends React.ComponentProps<any> {
     id: string,
+    children?: React.ReactNode
     // className?: string,
     // style?: CSSProperties,
     // wrapper?: string,
