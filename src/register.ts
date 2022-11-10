@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ComponentPlaceHolder } from "./components/component-placeholder";
 import { errors } from "./errors";
 import { ComponentTypes } from "./types";
 
@@ -18,4 +19,6 @@ export function registerComponent(componentName: string, componentType: Componen
 
     componentTypes[componentName] = componentType;
 }
+
+componentTypes[ComponentPlaceHolder.typeName] = ComponentPlaceHolder;
 

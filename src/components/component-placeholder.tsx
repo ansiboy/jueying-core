@@ -1,6 +1,5 @@
 import * as React from "react";
-import { ChildComponentProps, ComponentProps } from "../types";
-import { registerComponent } from "../register";
+import { ComponentProps } from "../types";
 import { PageDataParserContext } from "./page-data-parser";
 import { errors } from "../errors";
 import { parseComponentData } from "../parse-component-data";
@@ -9,13 +8,18 @@ export class ComponentPlaceHolder extends React.Component<ComponentProps> {
 
     static typeName = "PlaceHolder";
 
+    constructor(props: ComponentProps) {
+        super(props);
+
+    }
+
     render() {
         return <PageDataParserContext.Consumer>
             {args => {
                 if (!args)
                     throw errors.nullPageDataParserArguments();
 
-                let children = args.pageData.children.filter(o => (o.props as ChildComponentProps).parentId == this.props.id)
+                let children = args.pageData.children.filter(o => o.parentId && o.parentId == this.props.id);
                 let childComponents = children.map(c => parseComponentData(c, args.componentTypes, args.elementFactory));
                 return childComponents;
             }}
@@ -23,4 +27,3 @@ export class ComponentPlaceHolder extends React.Component<ComponentProps> {
     }
 }
 
-registerComponent(ComponentPlaceHolder.typeName, ComponentPlaceHolder);

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { parseComponentData } from "../src/parse-component-data";
 import { ClassHelloWorld, componentTypeNames, componentTypes, FunctionHelloWorldText } from "./components";
-import { classComponentData, composeComponentData1, functionComponentData, simpleDivComponentData, simpleDivComponentDataId, simpleDivComponentDataText } from "./page-datas";
+import { classComponentData, composeComponentData1, composeComponentData2, functionComponentData, simpleDivComponentData, simpleDivComponentDataId, simpleDivComponentDataText } from "./page-datas";
 
 test("parse div component data", function () {
     let componentElement = parseComponentData(simpleDivComponentData, componentTypes, React.createElement);
@@ -38,8 +38,18 @@ test("parse compose component data 1", function () {
     let componentElement = parseComponentData(composeComponentData1, componentTypes, React.createElement);
     render(componentElement);
 
-    screen.debug();
+    // screen.debug();
     let htmlElement = screen.getByTestId(componentTypeNames.classHelloWord);
     expect(htmlElement).not.toBeNull();
     expect(htmlElement.innerHTML.trim()).toBe(ClassHelloWorld.text);
+})
+
+test("parse compose component data 2", function () {
+    let componentElement = parseComponentData(composeComponentData2, componentTypes, React.createElement);
+    render(componentElement);
+
+    // screen.debug();
+    let htmlElement = screen.getByTestId(componentTypeNames.functionHelloWorld);
+    expect(htmlElement).not.toBeNull();
+    expect(htmlElement.innerHTML.trim()).toBe(FunctionHelloWorldText);
 })

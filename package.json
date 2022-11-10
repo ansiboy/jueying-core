@@ -5,7 +5,8 @@
     "types": "./out/index.d.ts",
     "scripts": {
         "build": "grunt",
-        "test": "jest"
+        "test": "jest",
+        "temp":"jest tests/page-data-parser.test.tsx"
     },
     "files": [
         "out",

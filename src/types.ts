@@ -20,7 +20,7 @@ export interface ComponentData {
     props: any;
     /** 子组件 */
     id: string;
-    // parentId?: string;
+    parentId?: string;
     name?: string;
     status?: ComponentStatus,
     children?: (ComponentData | string)[]
@@ -46,4 +46,4 @@ type Item = Omit<ComponentData, "children"> & {
 };
 export type ComponentDataList = Item[];
 
-export type ChildComponentProps = { parentId: string };
+// export type ChildComponentProps = { parentId: string };

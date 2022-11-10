@@ -37,8 +37,10 @@ export class PageDataParser extends React.Component<Props, State> {
     render(): React.ReactNode {
         let { pageData } = this.state;
         let { elementFactory, componentTypes } = this.props;
-        let children = pageData.children.filter(o => o.props);//.filter(o => o.parentId == pageData.id || o.parentId == null);
-        let childComponents = children.map(o => parseComponentData(o, componentTypes, elementFactory));
+        let children = pageData.children.filter(o => !o.parentId);
+        let childComponents = children.map(o => {
+            return parseComponentData(o, componentTypes, elementFactory);
+        });
         return <PageDataParserContext.Provider value={{ pageData, elementFactory, componentTypes }}>
             {childComponents}
         </PageDataParserContext.Provider>
