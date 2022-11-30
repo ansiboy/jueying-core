@@ -1,12 +1,12 @@
 {
     "name": "maishu-jueying-core",
-    "version": "4.0.2",
+    "version": "4.1.6",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
     "scripts": {
         "build": "grunt",
         "test": "jest",
-        "temp":"jest tests/page-data-parser.test.tsx"
+        "temp": "jest tests/page-data-parser.test.tsx"
     },
     "files": [
         "out",
