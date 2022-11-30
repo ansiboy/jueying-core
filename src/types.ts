@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export type ElementFactory = typeof React.createElement;
+export type ElementFactory = (type: React.ComponentClass<any> | React.FunctionComponent | string, props: any,
+    children: (string | React.ReactElement<any, string | React.JSXElementConstructor<any>>)[]) => React.ReactElement;//typeof React.createElement;
 export type ComponentTypes = { [key: string]: React.ComponentClass<any> | React.FunctionComponent | string };
 
 export interface ComponentProps {

@@ -28,6 +28,6 @@ export function parseComponentData(componentData: ComponentData, componentTypes:
     let props = Object.assign({}, componentData.props);
     props.key = props.key || componentData.id;
     props.id = componentData.id;
-    return createElement(type, props, ...children);
+    return createElement(type, props, children);
 }
 
